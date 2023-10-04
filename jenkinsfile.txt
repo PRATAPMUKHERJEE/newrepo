@@ -1,28 +1,37 @@
-pipeline 
-{
+pipeline {
     agent any
-    tools{maven 'mvn'}
-    stages 
-    {
-        stage("fetching") 
-        {
-            steps 
-            {
-                git branch: 'main', url:"https://github.com/PRATAPMUKHERJEE/newrepo"
+    tools {
+        maven 'mvn'
+    }
+    stages {
+        stage('Fetching') {
+            steps {
+                git branch: 'main', url: "https://github.com/PRATAPMUKHERJEE/SpringPetClinic.git"
             }
         }
-        stage('compile')
-        {
-            steps 
-            {
+        stage('Compile') {
+            steps {
                 sh 'mvn compile'
             }
         }
-        stage('Test')
-        {
-            steps 
-            {
+        stage('Test') {
+            steps {
                 sh 'mvn test'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('Verify') {
+            steps {
+                sh 'mvn verify'
+            }
+        }
+        stage('Install') {
+            steps {
+                sh 'mvn install'
             }
         }
     }
