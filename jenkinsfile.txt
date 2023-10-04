@@ -8,7 +8,7 @@ pipeline
         {
             steps 
             {
-                git branch: 'main', url:"https://github.com/PRATAPMUKHERJEE/SpringPetClinic"
+                git branch: 'main', url:"https://github.com/PRATAPMUKHERJEE/newrepo"
             }
         }
         stage('compile')
