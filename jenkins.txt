@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    tools {
+        maven 'mvn'
+    }
+    stages {
+        stage('Fetching') {
+            steps {
+                git branch: 'main', url: "https://github.com/pratapmukherjee/newrepo"
+            }
+        }
+ stage('build')
+        {
+            steps 
+            {
+                echo 'building the Maven Project'
+                sh 'mvn build'
+            }
+        }
+        stage('test')
+        {
+            steps 
+            { echo 'Testing the Maven Project'
+                sh 'mvn Testing'
+            }
+        }
+        
+    }
+}
